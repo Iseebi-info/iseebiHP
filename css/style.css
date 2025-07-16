@@ -1,0 +1,1294 @@
+/* ====================================
+   基本設定とCSS変数
+   ==================================== */
+:root {
+    /* カラーパレット */
+    --color-primary: #00adc1;      /* メインのターコイズブルー */
+    --color-secondary-light: #c8d8e1; /* 明るいグレーブルー */
+    --color-dark: #2d7282;         /* 濃いターコイズブルー */
+    --color-background: #f1f2f2;   /* ベースの背景色 */
+    --color-white: #ffffff;
+    --color-text: #333333;          /* 一般的なテキスト色 */
+    --color-gray: #666666;
+
+    /* フォント設定 */
+    --font-primary: 'Oxanium', sans-serif; /* ★英語タイトルなど用★ */
+    --font-japanese: 'M PLUS Rounded 1c', sans-serif; /* ★日本語テキスト用★ */
+
+    /* 余白・セクション設定 */
+    --section-padding-pc: 100px;
+    --section-padding-sp: 60px;
+    --container-width: 1200px; /* PCでの最大幅 */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* スムーズスクロール */
+}
+
+body {
+    font-family: var(--font-japanese);
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: var(--color-background);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* ====================================
+   汎用クラス
+   ==================================== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px; /* 左右の余白 */
+}
+
+.section-padding {
+    padding: var(--section-padding-pc) 0;
+}
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--color-dark);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-title span {
+    background-color: var(--color-background); /* 背景色に合わせて文字を浮かせる */
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px; /* 線の太さ */
+    background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.section-description {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: var(--color-gray);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ボタン */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px; /* 角丸を大きくしてポップに */
+    font-weight: 700;
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* 大文字に */
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-dark)); /* グラデーション */
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 8px 15px rgba(0, 173, 193, 0.3); /* 薄い影 */
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px); /* 浮き上がるアニメーション */
+    box-shadow: 0 12px 20px rgba(0, 173, 193, 0.4);
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ====================================
+   ヘッダー
+   ==================================== */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.95); /* 半透明で近未来感 */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px); /* スリガラスのような効果 */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    font-family: var(--font-primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.site-logo a {
+    color: var(--color-dark);
+}
+
+/* ロゴ画像のサイズはHTMLのstyle属性で直接指定 */
+/* .site-logo img {
+    height: 39px;
+    width: auto;
+} */
+
+
+.main-nav .nav-list {
+    display: flex; /* PCではFlexboxで表示 */
+    gap: 30px;
+}
+
+.main-nav .nav-list a {
+    color: var(--color-dark);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 5px; /* 下線のアニメーション用 */
+}
+
+.main-nav .nav-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-list a:hover::after {
+    width: 100%;
+}
+
+/* ハンバーガーメニュー (初期非表示) */
+.hamburger {
+    display: none; /* PCでは非表示 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative; /* z-index指定のため */
+    z-index: 1001; /* メニューの上に表示 */
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-dark);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* ハンバーガーメニューのアニメーション */
+.hamburger.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* ====================================
+   ヒーローセクション
+   ==================================== */
+.hero-section {
+    height: 100vh; /* 全画面表示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%); /* グラデーション背景 */
+    position: relative;
+    overflow: hidden; /* 幾何学模様をはみ出させない */
+    padding-top: 80px; /* ヘッダー分 */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* 背景の模様より手前に表示 */
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-sub-text {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 背景の幾何学模様 (例: 複数の円や三角形) */
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1); /* 薄い白 */
+    border-radius: 50%;
+    filter: blur(50px); /* ぼかす */
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.hero-section::before {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -150px;
+    animation: float1 15s infinite ease-in-out alternate;
+}
+
+.hero-section::after {
+    width: 500px;
+    height: 500px;
+    bottom: -100px;
+    right: -200px;
+    animation: float2 18s infinite ease-in-out alternate;
+}
+
+/* 幾何学模様のアニメーション */
+@keyframes float1 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(50px, 30px); }
+    100% { transform: translate(0, 0); }
+}
+@keyframes float2 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-40px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+
+/* ====================================
+   ニュースセクション
+   ==================================== */
+.news-section {
+    background-color: var(--color-white);
+}
+
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* レスポンシブなグリッド */
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.news-item {
+    background-color: var(--color-background);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.news-item time {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-bottom: 5px;
+}
+
+.news-item .news-category {
+    display: inline-block;
+    background-color: var(--color-secondary-light);
+    color: var(--color-dark);
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.news-item .news-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.news-item .news-title a {
+    color: var(--color-text);
+}
+
+.news-item .news-title a:hover {
+    color: var(--color-primary);
+}
+
+.news-item .news-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    margin-top: 10px;
+    line-height: 1.5;
+    display: -webkit-box; /* 複数行省略のための設定 */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* 2行で省略。ここを注意深く確認！ */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ====================================
+   ニュース詳細ページ
+   ==================================== */
+.news-detail-title {
+    font-family: var(--font-japanese);
+    font-size: 2.5rem;
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.news-meta {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.news-meta time {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-right: 15px;
+}
+
+.news-meta .news-category {
+    display: inline-block;
+    background-color: var(--color-secondary-light);
+    color: var(--color-dark);
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 5px;
+}
+
+.news-body {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+.news-body p {
+    margin-bottom: 1.5rem; /* 段落間の余白 */
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .news-detail-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    .news-meta {
+        margin-bottom: 30px;
+    }
+    .news-body {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* ====================================
+   タレントセクション
+   ==================================== */
+.talents-section {
+    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-secondary-light) 100%); /* 緩やかなグラデーション */
+}
+
+.talent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.talent-card {
+    background-color: var(--color-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block; /* リンク全体をカードにするため */
+    text-align: center;
+    position: relative;
+}
+
+.talent-card::before { /* ホバー時のオーバーレイ */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 173, 193, 0.7), rgba(45, 114, 130, 0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.talent-card:hover::before {
+    opacity: 1;
+}
+
+.talent-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.talent-card img {
+    width: 100%;
+    height: 300px; /* 固定高さ */
+    object-fit: cover; /* 画像をトリミング */
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 0;
+}
+
+.talent-card:hover img {
+    transform: scale(1.05); /* ホバーで画像を少し拡大 */
+}
+
+.talent-info {
+    padding: 20px;
+    position: relative;
+    z-index: 2; /* オーバーレイより手前 */
+    background-color: var(--color-white); /* 情報を乗せる背景 */
+    transform: translateY(0); /* ホバー時の動き初期値 */
+    transition: transform 0.3s ease;
+}
+
+.talent-card:hover .talent-info {
+    transform: translateY(-10px); /* ホバーで情報が少し上に移動 */
+}
+
+.talent-info h3 {
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 5px;
+}
+
+.talent-info p {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+}
+
+/* ====================================
+   グッズセクション
+   ==================================== */
+.goods-section {
+    background-color: var(--color-white);
+}
+
+.goods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.goods-item {
+    text-align: center;
+    background-color: var(--color-background);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+}
+
+.goods-item:hover {
+    transform: translateY(-5px);
+}
+
+.goods-item img {
+    width: 150px; /* 固定サイズ */
+    height: 150px; /* 固定サイズ */
+    object-fit: contain; /* 画像全体を表示 */
+    margin-bottom: 15px;
+    border-radius: 5px; /* 少し角丸に */
+}
+
+.goods-item .goods-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+
+/* ====================================
+   お問い合わせセクション
+   ==================================== */
+.contact-section {
+    background: linear-gradient(45deg, var(--color-dark) 0%, var(--color-primary) 100%); /* ヒーローと逆のグラデーション */
+    color: var(--color-white);
+}
+
+.contact-section .section-title {
+    color: var(--color-dark); /* ★ここを修正（または追加）★ */
+}
+
+.contact-section .section-title::before {
+    background: linear-gradient(to right, transparent, var(--color-white), transparent); /* ★線も白に変更して統一感を出す★ */
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap; /* スマホで折り返す */
+}
+
+.contact-card {
+    background-color: rgba(255, 255, 255, 0.15); /* 半透明の背景 */
+    backdrop-filter: blur(5px); /* スリガラス */
+    border-radius: 15px;
+    padding: 30px 40px;
+    text-align: center;
+    width: 380px;
+    max-width: 90%; /* スマホでの最大幅 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: var(--color-white); /* テキスト色を白に */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 薄い枠線 */
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.contact-card .contact-type {
+    font-family: var(--font-primary);
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.contact-card .contact-description {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+
+/* ====================================
+   フッター
+   ==================================== */
+.main-footer {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-footer p {
+    margin-bottom: 15px;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-nav a {
+    color: var(--color-white);
+    opacity: 0.8;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+}
+
+.social-icons-footer {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons-footer a {
+    color: var(--color-white);
+    font-size: 1.8rem; /* アイコンサイズ */
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons-footer a:hover {
+    opacity: 1;
+    transform: scale(1.1); /* ホバーで少し拡大 */
+}
+
+/* ====================================
+   タレント詳細ページ
+   ==================================== */
+.profile-content {
+    display: flex; /* 画像と詳細を横並びにする */
+    flex-direction: column; /* スマホでは縦並び */
+    align-items: center; /* 中央揃え */
+    gap: 40px; /* 画像とテキストの間の余白 */
+    margin-top: 50px;
+    background-color: var(--color-white); /* 背景色 */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* 影 */
+}
+
+.profile-image {
+    width: 300px; /* プロフィール画像の幅 */
+    height: 300px; /* プロフィール画像の高さ */
+    border-radius: 10px; /* 少し角丸に */
+    object-fit: contain; /* 画像全体を収める */
+    /* object-position: center;  必要に応じて画像の表示位置を調整 */
+    border: 2px solid var(--color-primary); /* フレーム */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    text-align: center; /* テキストを中央揃え */
+    max-width: 600px; /* テキストの最大幅 */
+}
+
+.profile-details h3 {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    color: var(--color-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.profile-details p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 15px;
+}
+
+.profile-details p strong {
+    color: var(--color-primary); /* 強調文字の色 */
+}
+
+.profile-details ul {
+    list-style: none; /* デフォルトの黒丸を削除 */
+    padding-left: 0;  /* 左側の余白を削除 */
+    margin-bottom: 20px; /* リストの下の余白 */
+    text-align: center; /* テキストを中央揃え */
+}
+
+.profile-details ul li {
+    font-size: 1rem; /* テキストサイズ */
+    color: var(--color-text);
+    margin-bottom: 8px; /* 各項目間の余白 */
+    line-height: 1.4; /* 行の高さ */
+}
+
+/* PC表示では左寄せにする */
+@media (min-width: 769px) {
+    .profile-details ul {
+        text-align: left;
+    }
+}
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: inline-flex; /* アイコンとテキストを並べる場合 */
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-white);
+}
+
+.social-links a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ====================================
+   お問い合わせフォームページ
+   ==================================== */
+.contact-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.tab-button {
+    background-color: var(--color-secondary-light);
+    color: var(--color-dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    outline: none; /* フォーカス時のアウトラインを消す */
+}
+
+.tab-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.tab-button.active {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-dark));
+    color: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-section {
+    background-color: var(--color-white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    display: none; /* 初期は非表示 */
+}
+
+.contact-form-section.active {
+    display: block; /* activeクラスが付いたら表示 */
+}
+
+.contact-form-section h3 {
+    font-family: var(--font-japanese);
+    font-size: 1.8rem;
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 25px;
+}
+
+.contact-form .form-group label {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.contact-form .form-group label .required {
+    color: #e74c3c; /* 赤色のアスタリスク */
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.contact-form .form-group input[type="text"],
+.contact-form .form-group input[type="email"],
+.contact-form .form-group input[type="tel"],
+.contact-form .form-group select,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-secondary-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-japanese);
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: var(--color-background); /* 入力欄の背景色 */
+}
+
+.contact-form .form-group input[type="text"]:focus,
+.contact-form .form-group input[type="email"]:focus,
+.contact-form .form-group input[type="tel"]:focus,
+.contact-form .form-group select:focus,
+.contact-form .form-group textarea:focus {
+    border-color: var(--color-primary); /* フォーカス時の色 */
+    box-shadow: 0 0 0 3px rgba(0, 173, 193, 0.2);
+}
+
+.contact-form .form-group textarea {
+    resize: vertical; /* 縦方向のみリサイズ可能 */
+}
+
+.contact-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.contact-form .checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px; /* チェックボックスのサイズ */
+    height: 18px;
+}
+
+.contact-form .btn-primary {
+    width: auto; /* ボタンの幅をコンテンツに合わせる */
+    margin: 0 auto; /* 中央寄せ */
+    display: block; /* 中央寄せのためにブロック要素に */
+}
+
+/* ====================================
+   パートナー企業様紹介ページ
+   ==================================== */
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.partner-item {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.partner-item a {
+    display: block; /* カード全体をリンクにするため */
+    color: var(--color-text); /* テキスト色をデフォルトに戻す */
+}
+
+.partner-item a:hover {
+    color: var(--color-text); /* ホバー時もテキスト色を維持 */
+}
+
+.partner-item .partner-logo {
+    max-width: 150px; /* ロゴの最大幅 */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.partner-item h3 {
+    font-family: var(--font-japanese);
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.partner-item p {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+/* パートナー企業様紹介ページ内のメッセージ */
+.no-partners-message {
+    grid-column: 1 / -1; /* グリッド全体に広げる */
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    margin-top: 50px;
+}
+
+.no-partners-message p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .no-partners-message {
+        padding: 30px 15px;
+    }
+    .no-partners-message p {
+        font-size: 1rem;
+    }
+}
+
+/* ====================================
+   協力クリエイター様紹介ページ
+   ==================================== */
+.creator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.creator-item {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creator-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.creator-item a {
+    display: block; /* カード全体をリンクにするため */
+    color: var(--color-text); /* テキスト色をデフォルトに戻す */
+}
+
+.creator-item a:hover {
+    color: var(--color-text); /* ホバー時もテキスト色を維持 */
+}
+
+.creator-item .creator-icon {
+    width: 120px; /* アイコンのサイズ */
+    height: 120px;
+    border-radius: 50%; /* 丸くする */
+    object-fit: cover; /* アイコンがトリミングされても中央を維持 */
+    margin-bottom: 20px;
+    border: 2px solid var(--color-primary); /* フレーム */
+}
+
+.creator-item h3 {
+    font-family: var(--font-japanese);
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.creator-item p {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+/* 協力クリエイター様募集メッセージ (パートナー募集と共通のスタイルを適用) */
+.no-creators-message { /* no-partners-message と似たスタイルだが、クラス名で区別 */
+    grid-column: 1 / -1; /* グリッド全体に広げる */
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    margin-top: 50px;
+}
+
+.no-creators-message p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .creator-grid {
+        grid-template-columns: 1fr; /* スマホでは1列にする */
+    }
+    .creator-item {
+        padding: 20px;
+    }
+    .creator-item h3 {
+        font-size: 1.3rem;
+    }
+    .creator-item .creator-icon {
+        width: 100px; /* スマホでのアイコンサイズ */
+        height: 100px;
+    }
+    .no-creators-message {
+        padding: 30px 15px;
+    }
+    .no-creators-message p {
+        font-size: 1rem;
+    }
+}
+
+/* ------------------------------
+   レスポンシブ調整 (お問い合わせフォームページ)
+------------------------------ */
+@media (max-width: 768px) {
+    .contact-form-section {
+        padding: 25px;
+    }
+    .contact-form-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .contact-tabs {
+        flex-direction: column; /* スマホでは縦並び */
+        gap: 8px;
+    }
+    .tab-button {
+        width: 100%; /* スマホでは幅いっぱいに */
+        padding: 10px 15px;
+    }
+}
+
+/* ------------------------------
+   レスポンシブ調整 (タレント詳細ページ)
+------------------------------ */
+@media (min-width: 769px) { /* PCサイズの場合 */
+    .profile-content {
+        flex-direction: row; /* 横並び */
+        text-align: left; /* テキストを左揃え */
+        justify-content: center; /* 中央に寄せる */
+        align-items: flex-start; /* 上揃え */
+    }
+    .profile-details {
+        text-align: left; /* テキストを左揃え */
+    }
+    .social-links {
+        justify-content: flex-start; /* 左揃え */
+    }
+}
+
+@media (max-width: 768px) { /* スマホサイズの場合 */
+    .profile-content {
+        padding: 20px; /* 余白を減らす */
+        gap: 30px; /* 余白調整 */
+    }
+    .profile-image {
+        width: 200px; /* スマホでの画像幅 */
+        height: 200px; /* スマホでの画像高さ */
+    }
+    .profile-details h3 {
+        font-size: 2rem; /* スマホでの名前のサイズ */
+    }
+    .profile-details p {
+        font-size: 1rem; /* スマホでのテキストサイズ */
+    }
+}
+
+
+/* ====================================
+   レスポンシブデザイン (モバイルファースト)
+   ==================================== */
+
+/* 小さなデバイス (スマホ) */
+@media (max-width: 768px) {
+    .section-padding {
+        padding: var(--section-padding-sp) 0;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+    .section-title span {
+        padding: 0 10px;
+    }
+
+    /* ヘッダー */
+    .main-header .container {
+        flex-direction: row; /* ロゴとハンバーガー */
+        justify-content: space-between;
+    }
+
+    .main-nav .nav-list {
+        display: none; /* 初期は非表示 */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%; /* 画面外に隠す */
+        width: 70%;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%); /* グラデーション背景 */
+        padding-top: 100px; /* ヘッダーの高さ分、コンテンツを下げる */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s ease-in-out; /* スライドのアニメーション */
+        z-index: 999; /* ヘッダーより下、ハンバーガーより上 */
+    }
+
+    .main-nav .nav-list.is-active {
+        right: 0; /* 表示 */
+        display: flex; /* ★これが必要 */
+    }
+
+    .main-nav .nav-list li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .main-nav .nav-list li:last-child {
+        border-bottom: none;
+    }
+
+    .main-nav .nav-list a {
+        color: var(--color-white); /* メニュー内のリンク色を白に変更 */
+        font-size: 1.2rem; /* 少し大きくして見やすく */
+        padding-bottom: 0; /* 下線アニメーション不要 */
+    }
+    .main-nav .nav-list a::after {
+        display: none; /* 下線アニメーション不要 */
+    }
+
+
+    .hamburger {
+        display: block; /* スマホで表示 */
+    }
+
+    /* ヒーローセクション */
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-sub-text {
+        font-size: 1.2rem;
+    }
+    .hero-section::before,
+    .hero-section::after {
+        width: 200px;
+        height: 200px;
+        filter: blur(30px);
+    }
+    .hero-section::before {
+        top: -50px;
+        left: -50px;
+    }
+    .hero-section::after {
+        bottom: -50px;
+        right: -50px;
+    }
+
+    /* ニュース・タレント・グッズ */
+    .news-list, .talent-grid, .goods-grid {
+        grid-template-columns: 1fr; /* 1列にする */
+    }
+
+    .talent-card img {
+        height: 250px; /* スマホで少し小さく */
+    }
+
+    /* お問い合わせ */
+    .contact-links {
+        gap: 20px;
+    }
+    .contact-card {
+        width: 100%; /* 全幅に */
+        padding: 25px 30px;
+    }
+    .contact-card .contact-type {
+        font-size: 1.5rem;
+    }
+
+    /* フッター */
+    .main-footer .container {
+        flex-direction: column;
+    }
+    .footer-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .main-footer p {
+        margin-bottom: 10px;
+    }
+}
+
+/* 中間のデバイス (タブレット) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 2.8rem;
+    }
+
+    .main-nav .nav-list {
+        gap: 20px;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .news-list, .talent-grid, .goods-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}

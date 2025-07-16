@@ -1,0 +1,17 @@
+<footer class="main-footer">
+        <div class="container">
+            <p> いセえび All Rights Reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+                <li><a href="terms-of-service.html">利用規約</a></li>
+            </ul>
+            <div class="social-icons-footer">
+                <a href="https://twitter.com/Iseebi_info" target="_blank" rel="noopener noreferrer" aria-label="いセえび公式X">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@Iseebi.info01" target="_blank" rel="noopener noreferrer" aria-label="いセえび公式YouTube"> 
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
