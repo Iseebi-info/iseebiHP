@@ -792,6 +792,71 @@ img {
 }
 
 /* ====================================
+   所属クリエイターセクション (トップページ用)
+   ==================================== */
+.creator-grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* タレントグリッドと似た構成 */
+    gap: 30px;
+    margin-bottom: 50px;
+    margin-top: 50px; /* セクション説明との余白 */
+}
+
+.creator-card-home {
+    background-color: var(--color-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px; /* 情報の下の余白 */
+}
+
+.creator-card-home:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.creator-card-home .creator-image-home {
+    width: 150px; /* アイコン画像のサイズ */
+    height: 150px;
+    border-radius: 50%; /* 丸くする */
+    object-fit: cover;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.creator-card-home .creator-info-home h3 {
+    font-family: var(--font-japanese);
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 5px;
+}
+
+.creator-card-home .creator-info-home p {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .creator-grid-home {
+        grid-template-columns: 1fr; /* スマホでは1列 */
+    }
+    .creator-card-home .creator-image-home {
+        width: 120px;
+        height: 120px;
+    }
+    .creator-card-home h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ====================================
    お問い合わせフォームページ
    ==================================== */
 .contact-tabs {
