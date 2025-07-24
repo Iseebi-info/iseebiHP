@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="いセえび公式ウェブサイト。個性豊かな配信者が多数所属!最新のイベント情報、グッズ販売、メンバー紹介など、いセえびの全てをお届けします。">
     <meta name="keywords" content="いセえび, VTuber, 事務所, メンバー, 公式サイト, ゲーム, 配信, エンタメ, 配信者">
-    <title> いセえび</title>
+    <title>いセえび</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,15 +15,14 @@
     <link rel="apple-touch-icon" href="icon/ISEEBI_.png">
     <link rel="msapplication-TileImage" href="icon/ISEEBI_.png">
     <meta name="msapplication-TileColor" content="#00adc1">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3J0TCJCDTM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-3J0TCJCDTM');
-</script>
+      gtag('config', 'G-XXXXXXXXXX'); // ここにあなたの測定IDが入ります
+    </script>
 </head>
 <body>
 
@@ -40,6 +39,7 @@
                     <li><a href="#hero">HOME</a></li>
                     <li><a href="#news">NEWS</a></li>
                     <li><a href="#talents">TALENTS</a></li>
+                    <li><a href="#resident-creators">CREATORS</a></li> <li><a href="#live-streams">LIVE</a></li>
                     <li><a href="#goods">GOODS</a></li>
                     <li><a href="#contact">CONTACT</a></li>
                 </ul>
@@ -168,9 +168,9 @@
                     </a>
 
                     <a href="talent-senoseno.html" class="talent-card">
-                        <img src="member/senoseno.png" alt="せのせの">
+                        <img src="member/senoseno.png" alt="ぜのせの癒麦酒">
                         <div class="talent-info">
-                            <h3>せのせの</h3>
+                            <h3>ぜのせの癒麦酒</h3>
                             </div>
                     </a>
 
@@ -192,28 +192,33 @@
             </div>
         </section>
 
-        <section id="goods" class="goods-section section-padding">
-    <div class="container">
-        <h2 class="section-title"><span>GOODS</span></h2>
-        <p class="section-description">coming soon...</p>
-    </div> 
-        <div class="text-center">
-            <a href="https://iseebi-goods.booth.pm/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">オンラインストアへ</a>
-        </div>
-    </div>
-</section>
-
-</section> <section id="contact-promo" class="contact-section section-padding"> <div class="container">
-                <h2 class="section-title"><span>SUPPORT</span></h2>
-                <div class="contact-links">
-                    <a href="partners.html" class="contact-card"> <p class="contact-type">パートナー企業様</p>
-                        <p class="contact-description">いセえびを支えてくださる<br>企業・団体様</p>
+        <section id="resident-creators" class="talents-section section-padding"> <div class="container">
+                <h2 class="section-title"><span>RESIDENT CREATORS</span></h2>
+                <p class="section-description">いセえびの活動を支える、専属クリエイターをご紹介いたします。</p>
+                
+                <div class="creator-grid-home"> <a href="creators.html#creator1" class="creator-card-home"> <img src="member/maika.png" alt="天王舞華" class="creator-image-home">
+                        <div class="creator-info-home">
+                            <h3>天王舞華</h3>
+                            <p>イラストレーター</p>
+                        </div>
                     </a>
-                        <a href="support-creators.html" class="contact-card"> <p class="contact-type">協力クリエイター様</p>
-                            <p class="contact-description">共に活動するクリエイターの<br>皆様をご紹介</p>
-                        </a>
+                    
+                    </div>
+                <div class="text-center" style="margin-top: 60px;">
+                    <a href="creators.html" class="btn btn-secondary">VIEW ALL CREATORS</a>
                 </div>
             </div>
+        </section>
+        
+        <section id="goods" class="goods-section section-padding">
+            <div class="container">
+                <h2 class="section-title"><span>GOODS</span></h2>
+                <p class="section-description">coming soon...</p>
+            </div>
+            <div class="text-center">
+                <a href="https://your-shop-url.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">オンラインストアへ</a>
+            </div>
+        </section>
 
         <section id="contact" class="contact-section section-padding">
             <div class="container">
@@ -231,12 +236,15 @@
             </div>
         </section>
 
-
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            <p> いセえび All Rights Reserved.</p>
+            <p>© 2025 いセえび All Rights Reserved.</p>
+            <ul class="footer-nav">
+                <li><a href="privacy-policy.html">プライバシーポリシー</a></li>
+                <li><a href="terms-of-service.html">利用規約</a></li>
+            </ul>
             <div class="social-icons-footer">
                 <a href="https://twitter.com/Iseebi_info" target="_blank" rel="noopener noreferrer" aria-label="いセえび公式X">
                     <i class="fab fa-x-twitter"></i>
