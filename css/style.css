@@ -573,7 +573,7 @@ img {
 
 .goods-item img {
     width: 150px; /* 固定サイズ */
-    height: 150px; /* 固定サイズ */
+    height: 150px;
     object-fit: contain; /* 画像全体を表示 */
     margin-bottom: 15px;
     border-radius: 5px; /* 少し角丸に */
@@ -1094,7 +1094,7 @@ img {
     width: 120px; /* アイコンのサイズ */
     height: 120px;
     border-radius: 50%; /* 丸くする */
-    object-fit: cover; /* アイコンがトリミングされても中央を維持 */
+    object-fit: cover;
     margin-bottom: 20px;
     border: 2px solid var(--color-primary); /* フレーム */
 }
@@ -1143,7 +1143,7 @@ img {
         font-size: 1.3rem;
     }
     .creator-item .creator-icon {
-        width: 100px; /* スマホでのアイコンサイズ */
+        width: 100px;
         height: 100px;
     }
     .no-creators-message {
@@ -1243,9 +1243,9 @@ img {
         right: -100%; /* 画面外に隠す */
         width: 70%;
         height: 100vh;
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%); /* グラデーション背景 */
+        background: linear-gradient(135deg, rgba(0, 173, 193, 1), rgba(45, 114, 130, 1)); /* グラデーション背景 */
         padding-top: 100px; /* ヘッダーの高さ分、コンテンツを下げる */
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         transition: right 0.4s ease-in-out; /* スライドのアニメーション */
         z-index: 999; /* ヘッダーより下、ハンバーガーより上 */
     }
